@@ -5,32 +5,27 @@ import numpy as np
 from cvzone.HandTrackingModule import HandDetector
 import time
 
-# Initialize Pygame
 pygame.init()
-
-# Screen setup
 width, height = 1280, 720
 window = pygame.display.set_mode((width, height))
 pygame.display.set_caption("JB Games")
 clock = pygame.time.Clock()
 fps = 30
 
-# Load assets
 font_path = 'C:/Users/Jina/Downloads/Resources/Resources/Marcellus-Regular.ttf'
 bg_image = pygame.image.load('C:/Users/Jina/Downloads/Resources/Resources/BackgroundBlue.jpg')
 bg_image = pygame.transform.scale(bg_image, (width, height))
 balloon_image = pygame.image.load('C:/Users/Jina/Downloads/Resources/Resources/BalloonRed.png').convert_alpha()
 
-# Button setup
+
 button = pygame.Rect(500, 400, 280, 80)
 
-# Function: Welcome Screen
 def show_welcome():
     running = True
     while running:
         window.blit(bg_image, (0, 0))
 
-        # Draw welcome text
+        
         font = pygame.font.Font(font_path, 80)
         text = font.render("Welcome to JB Games", True, (255, 255, 255))
         window.blit(text, (180, 200))
@@ -54,9 +49,8 @@ def show_welcome():
         pygame.display.update()
         clock.tick(fps)
 
-# Function: Balloon Game
 def run_game():
-    # Setup
+    
     cap = cv2.VideoCapture(0)
     cap.set(3, 1280)
     cap.set(4, 720)
@@ -121,5 +115,4 @@ def run_game():
         pygame.display.update()
         clock.tick(fps)
 
-# Run the welcome screen first
 show_welcome()
